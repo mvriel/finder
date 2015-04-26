@@ -1,0 +1,15 @@
+{
+    "name": "phpdocumentor/finder",
+    "license": "MIT",
+    "authors": [
+        { "name": "Mike van Riel", "email": "me@mikevanriel.com" }
+    ],
+    "autoload": {
+        "psr-4": {
+            "phpDocumentor\\Files\\": "src/"
+        }
+    },
+    "require": {
+        "rikbruil/specification": "0.9.*"
+    }
+}
