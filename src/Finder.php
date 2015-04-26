@@ -23,14 +23,34 @@ class Finder
             );
         }
 
-        $iterator = new \DirectoryIterator($dsn->getPath());
-        foreach ($iterator as $path) {
-            if ($path->isDot()) {
+        foreach($this->yieldFilesInPath($specification, $dsn->getPath()) as $location) {
+            yield $location;
+        }
+    }
+
+    /**
+     * @param SpecificationInterface $specification
+     * @param string                 $path
+     *
+     * @return \Generator
+     */
+    private function yieldFilesInPath(SpecificationInterface $specification, $path)
+    {
+        $iterator = new \DirectoryIterator($path);
+        foreach ($iterator as $location) {
+            if ($location->isDot()) {
                 continue;
             }
 
-            if ($specification->isSatisfiedBy($path)) {
-                yield new File($path->getRealPath());
+            if ($specification->isSatisfiedBy($location)) {
+                if ($location->isDir()) {
+                    foreach ($this->yieldFilesInPath($specification, $location->getRealPath()) as $returnedLocation) {
+                        yield $returnedLocation;
+                    }
+                    continue;
+                }
+
+                yield new File($location->getRealPath());
             }
         }
     }

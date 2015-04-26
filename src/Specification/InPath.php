@@ -23,6 +23,6 @@ class InPath extends CompositeSpecification
      */
     public function isSatisfiedBy($value)
     {
-        return (strpos($value->getRealPath(), $this->path) === 0 && $value->isFile());
+        return (strpos($value->getRealPath(), $this->path) === 0);
     }
 }

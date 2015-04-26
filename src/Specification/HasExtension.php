@@ -23,6 +23,6 @@ class HasExtension extends CompositeSpecification
      */
     public function isSatisfiedBy($value)
     {
-        return (in_array($value->getExtension(), $this->extensions));
+        return ($value->isDir() || in_array($value->getExtension(), $this->extensions));
     }
 }
