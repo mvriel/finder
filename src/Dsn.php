@@ -22,9 +22,9 @@ final class Dsn
         $this->scheme   = isset($dsnUrl['scheme']) ? $dsnUrl['scheme'] : '';
         $this->host     = isset($dsnUrl['host']) ? $dsnUrl['host'] : '';
         $this->port     = isset($dsnUrl['port']) ? $dsnUrl['port'] : 0;
-        $this->username = isset($dsnUrl['user']) ? $dsnUrl['user'] : 0;
-        $this->password = isset($dsnUrl['pass']) ? $dsnUrl['pass'] : 0;
-        $this->path     = isset($dsnUrl['path']) ? $dsnUrl['path'] : 0;
+        $this->username = isset($dsnUrl['user']) ? $dsnUrl['user'] : '';
+        $this->password = isset($dsnUrl['pass']) ? $dsnUrl['pass'] : '';
+        $this->path     = isset($dsnUrl['path']) ? $dsnUrl['path'] : '';
     }
 
     /**
